@@ -1,0 +1,133 @@
+﻿<!-- **********************************************************************
+
+Title:          default.html
+
+Type:           page
+
+Description:    Pulise information display (SPA).
+
+ Author:        Richard C. Morris, Synergex Professional Services Group
+
+ Copyright (c) 2016, Synergex International, Inc. All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+
+ * Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+**********************************************************************
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Symphony Pulse - Symphony Bride Statistics Reporting Portal</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="page-header">
+            <h1>
+                Symphony Pulse
+            </h1>
+            <h3>
+                Symphoy Bridge Statistics Reporting
+            </h3>
+        </div>
+
+        <div class="span12" id="domainGraphDiv">
+            <h6 data-bind="visible: pulseinfo().length > 0">Active domains</h6>
+            <input type="hidden" name="gotGraphDomains" value="0" />
+            <input type="hidden" name="graphItemDomains" />
+        </div>
+        
+        <br />
+
+        <div class="span12" id="avgExecTimeGraphDiv">
+            <h6 data-bind="visible: pulseinfo().length > 0">Average server execution times</h6>
+            <input type="hidden" name="gotGraphAvgExecTime" value="0" />
+            <input type="hidden" name="graphItemAvgExecTime" />
+        </div>
+        <br />
+
+        <div class="span12">
+            <div>
+                <button class="btn" data-bind="click: refresh">Refresh Statistics</button>
+            </div>
+            <div></div>
+            <br />
+            <div></div>
+            <div>
+                <table class="table table-bordered table-condensed" data-bind="visible: pulseinfo().length > 0">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time (hour)</th>
+                            <th>Domain timeout</th>
+                            <th>Active domains</th>
+                            <th># EXEC</th>
+                            <th># SELECT</th>
+                            <th>Bytes to Server</th>
+                            <th>Bytes to Client</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: pulseinfo">
+                        <tr>
+                            <td><span style="text-anchor:middle" data-bind="text: moment(Log_date).format('LL')"></span></td>
+                            <td><span data-bind="text: Log_hour"></span></td>
+                            <td><span data-bind="text: Domain_timeout"></span></td>
+                            <td><span data-bind="text: Number_of_active_domains"></span></td>
+                            <td><span data-bind="text: Number_exec_calls"></span></td>
+                            <td><span data-bind="text: Number_select_calls"></span></td>
+                            <td><span data-bind="text: Bytes_recieved"></span></td>
+                            <td><span data-bind="text: Bytes_sent"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p data-bind="visible: error, text: error" class="text-error"></p>
+            <p class="text-info" data-bind="visible: !error() && pulseinfo().length == 0">No Bridge Statistics found.</p>
+        </div>
+
+
+        <!-- this is the "view model" script -->
+        <script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js'></script>
+        <script type='text/javascript' src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+        <!-- date processing support -->
+        <script type='text/javascript' src="Scripts/moment-with-locales.js"></script>
+        <script type='text/javascript' src="Scripts/moment.js"></script>
+
+        <!-- page logic -->
+        <script type='text/javascript' src="Scripts/ViewModel.js"></script>
+        <script type='text/javascript' src="Scripts/SymphonyPulse.js"></script>
+
+        <!-- graph supprt -->
+        <script type='text/javascript' src="Scripts/excanvas.js"></script>
+        <script type='text/javascript' src="Scripts/html5-canvas-bar-graph.js"></script>
+
+        <!-- activity graph -->
+
+        <script type ='text/javascript' src="Scripts/graph.js"></script>
+
+</div>
+</body>
+</html>

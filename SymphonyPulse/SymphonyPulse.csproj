@@ -57,11 +57,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="SymphonyConductor, Version=3.2.0.0, Culture=neutral, PublicKeyToken=14780e48e42cd7e3, processorArchitecture=MSIL">
-      <HintPath>..\packages\SymphonyHarmonyUnplugged.3.2.0\lib\net45\SymphonyConductor.dll</HintPath>
+      <HintPath>..\packages\SymphonyHarmonyUnplugged.3.2.1\lib\net45\SymphonyConductor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SymphonyHarmony, Version=3.2.0.0, Culture=neutral, PublicKeyToken=14780e48e42cd7e3, processorArchitecture=MSIL">
-      <HintPath>..\packages\SymphonyHarmonyUnplugged.3.2.0\lib\net45\SymphonyHarmony.dll</HintPath>
+      <HintPath>..\packages\SymphonyHarmonyUnplugged.3.2.1\lib\net45\SymphonyHarmony.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http" />
@@ -96,11 +96,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="default.html" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\graph.js" />
+    <Content Include="Scripts\html5-canvas-bar-graph.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\SymphonyPulse.js" />
+    <Content Include="Scripts\ViewModel.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Pulse_DataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -117,7 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
@@ -135,7 +146,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49569</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49569/</IISUrl>
+          <IISUrl>http://localhost:49570/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
