@@ -93,7 +93,8 @@ function pulse(data) {
 };
 // Callback for error responses from the server
 function onError(error) {
-    self.error('Error: ' + error.status + ' ' + error.statusText);
+    var self = this;
+    //self.error('Error: ' + error.status + ' ' + error.statusText);
 }
 
 function ajaxRequest(type, url, data) {

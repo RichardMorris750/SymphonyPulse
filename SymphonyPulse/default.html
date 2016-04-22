@@ -49,7 +49,7 @@ Description:    Pulise information display (SPA).
                 Symphony Pulse
             </h1>
             <h3>
-                Symphoy Bridge Statistics Reporting
+                Symphony Bridge Statistics Reporting
             </h3>
         </div>
 
@@ -58,7 +58,7 @@ Description:    Pulise information display (SPA).
             <input type="hidden" name="gotGraphDomains" value="0" />
             <input type="hidden" name="graphItemDomains" />
         </div>
-        
+
         <br />
 
         <div class="span12" id="avgExecTimeGraphDiv">
@@ -103,10 +103,12 @@ Description:    Pulise information display (SPA).
                     </tbody>
                 </table>
             </div>
-            <p data-bind="visible: error, text: error" class="text-error"></p>
-            <p class="text-info" data-bind="visible: !error() && pulseinfo().length == 0">No Bridge Statistics found.</p>
+            <!--            <p data-bind="visible: error, text: error" class="text-error"></p>-->
+            <p class="text-info" data-bind="visible: !error() && pulseinfo().length == 0">Loading Bridge Statistics....</p>
+            <p class="text-info" data-bind="visible: error()">
+                <label class="text-error" data-bind="text: error"></label>
+            </p>
         </div>
-
 
         <!-- this is the "view model" script -->
         <script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js'></script>
@@ -126,8 +128,8 @@ Description:    Pulise information display (SPA).
 
         <!-- activity graph -->
 
-        <script type ='text/javascript' src="Scripts/graph.js"></script>
+        <script type='text/javascript' src="Scripts/graph.js"></script>
 
-</div>
+    </div>
 </body>
 </html>

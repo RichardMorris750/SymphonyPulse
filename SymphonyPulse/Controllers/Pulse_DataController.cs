@@ -52,7 +52,7 @@ namespace SymphonyPulse.Controllers
             try
             {
                 response = (await DataExecute.RunDataExecute(
-                    new DBConnector("synremote:user/pass@localhost:8082!table.file.mapper", HostServiceType.ConsoleServerTcp),
+                    new DBConnector("synremote:user/pass@SymphonyFramework!", HostServiceType.RelayServer, "dRjiyTaojffcmd8NlJyUmrbjY65TFW8XLd/wcP1Q6B0="),
                     "exec @SymphonyMetronome.PulseUtilities.GetPulseInfo",
                     new Pulse_Data(), selectDate))
                     .OfType<Pulse_Data>().ToList();
